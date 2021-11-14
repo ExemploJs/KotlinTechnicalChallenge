@@ -1,5 +1,6 @@
 package com.technical.challenge.operator.controller
 
+import com.technical.challenge.APIException
 import com.technical.challenge.operator.request.BillRequest
 import com.technical.challenge.operator.request.RepresentativeRequest
 import com.technical.challenge.operator.request.TransferRequest
@@ -7,6 +8,7 @@ import com.technical.challenge.operator.service.UserAccountOperationService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 
 @RestController
@@ -15,7 +17,11 @@ class UserAccountOperationController(@Autowired val service : UserAccountOperati
     @PutMapping("/account/{userId}/withdraw")
     @ResponseStatus(HttpStatus.OK)
     fun withdraw(@PathVariable("userId") userId: Long, @RequestBody request: RepresentativeRequest) {
-        service.withdraw(userId, request.value)
+        try {
+            service.withdraw(userId, request.value)
+        } catch(e : Exception) {
+            throw APIException(e.message!!)
+        }
     }
 
     @PutMapping("/account/{userId}/deposit")

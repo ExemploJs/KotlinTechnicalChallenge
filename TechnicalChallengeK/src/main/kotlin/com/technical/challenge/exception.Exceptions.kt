@@ -64,11 +64,16 @@ class ValueCannotBeNegativeOrZeroException(message : String) : RuntimeException(
 }
 
 @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-class APIException(message : String) : RuntimeException(message) {
+class APIException : RuntimeException {
 
     private object APIException {
         const val DEFAULT_MESSAGE = "Ocorreu um erro interno no servidor! Contate o Administrador ou tente novamente mais tarde!"
     }
+
+    override val message : String
+        get() = APIException.DEFAULT_MESSAGE + ": " +  super.message
+
+    constructor(message : String) : super(message)
 
     constructor() : this(APIException.DEFAULT_MESSAGE)
 }

@@ -13,7 +13,7 @@ data class Account(
     val agency : String,
 
     @OneToOne
-    val user : User?,
+    val user : User,
 
     val accountDigit : String?,
     val agencyDigit : String?,

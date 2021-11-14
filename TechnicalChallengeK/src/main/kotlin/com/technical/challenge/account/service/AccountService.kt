@@ -32,7 +32,7 @@ class AccountService(val repository: AccountRepository, val userRepository: User
     fun save(account: Account) {
         try {
             repository.save(account)
-        } catch(e : Exception) {
+        } catch (e: Exception) {
             throw APIException(e.message!!)
         }
     }
@@ -75,6 +75,4 @@ class AccountService(val repository: AccountRepository, val userRepository: User
             account.agencyDigit,
             account.balance, account.active
         )
-
-
 }

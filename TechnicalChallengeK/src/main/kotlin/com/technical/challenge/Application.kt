@@ -1,6 +1,5 @@
 package com.technical.challenge
 
-import com.technical.challenge.user.controller.UserController
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
