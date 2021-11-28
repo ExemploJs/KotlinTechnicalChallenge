@@ -23,7 +23,7 @@ class AccountService(val repository: AccountRepository, val userRepository: User
                 try {
                     repository.save(getAccount(request, it))
                 } catch (e: Exception) {
-                    throw APIException()
+                    throw APIException(e.message)
                 }
             }
     }
@@ -33,7 +33,7 @@ class AccountService(val repository: AccountRepository, val userRepository: User
         try {
             repository.save(account)
         } catch (e: Exception) {
-            throw APIException(e.message!!)
+            throw APIException(e.message)
         }
     }
 
@@ -46,7 +46,7 @@ class AccountService(val repository: AccountRepository, val userRepository: User
                     it.active = false
                     repository.save(it)
                 } catch (e: Exception) {
-                    throw APIException()
+                    throw APIException(e.message)
                 }
             }
     }

@@ -73,7 +73,7 @@ class APIException : RuntimeException {
     override val message : String
         get() = APIException.DEFAULT_MESSAGE + ": " +  super.message
 
-    constructor(message : String) : super(message)
+    constructor(message : String?) : super("$APIException.DEFAULT_MESSAGE: $message")
 
     constructor() : this(APIException.DEFAULT_MESSAGE)
 }
