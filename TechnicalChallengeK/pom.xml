@@ -44,6 +44,12 @@
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>io.mockk</groupId>
+			<artifactId>mockk</artifactId>
+			<version>1.12.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
